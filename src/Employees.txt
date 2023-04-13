@@ -1,0 +1,42 @@
+function handleEmployeeCardClick(event)
+    {
+        const transformedEmployees = employees.map((employee) => employee.id === parseInt(event.currentTarget.id)
+                                                  ?(employee.teamName === selectedTeam)?{...employee, teamName:''}:{...employee, teamName: selectedTeam}
+                                                  :employee);
+        setEmployees(transformedEmployees);
+    }
+
+This function appears to be handling a click event on an employee card. It is defined with a single parameter, event, which is an object representing the event that occurred.
+
+Inside the function, the first line initializes a constant variable called transformedEmployees which is the result of calling the map() method on the employees array. The map() method creates a new array with the results of calling a provided function on every element in the calling array.
+
+The provided function takes a single parameter employee and has a single line of code, which is a ternary expression.
+
+The ternary expression has three parts, separated by a question mark (?) and a colon (:). The first part is a boolean condition which checks if the id of the current employee is equal to the id of the current target element of the event (event.currentTarget.id), which is the element that was clicked. If this condition is true, the second part of the ternary expression (between the question mark and the colon) is executed. If the condition is false, the third part of the ternary expression (after the colon) is executed.
+
+The second part of the ternary expression is another boolean condition which checks if the teamName of the current employee is equal to the currently selected team (selectedTeam). If this condition is true, an object is returned which is a copy of the current employee with the teamName property set to an empty string. If this condition is false, an object is returned which is a copy of the current employee with the teamName property set to the currently selected team (selectedTeam).
+
+The third part of the ternary expression simply returns the current employee object without any modifications.
+
+Finally, the setEmployees() function is called and passed the transformedEmployees array as an argument. This updates the employees state with the modified array.
+
+
+
+useEffect(() => {
+       localStorage.setItem('employeeList', JSON.stringify(employees));
+  },[employees]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedTeam', JSON.stringify(selectedTeam));
+  },[selectedTeam]);
+
+This code is using the useEffect hook in React.
+
+The useEffect hook allows you to perform side effects in functional components. It takes a function as an argument, which will be executed after the component renders. An optional second argument is an array of values, called the "dependencies," that determines when the effect function should be run.
+
+In the first useEffect block, the effect function is setting the employeeList item in local storage to the JSON-serialized value of the employees state variable. The second argument to useEffect is an array containing employees, which means that the effect function will be run anytime employees changes.
+
+In the second useEffect block, the effect function is setting the selectedTeam item in local storage to the JSON-serialized value of the selectedTeam state variable. The second argument to useEffect is an array containing selectedTeam, which means that the effect function will be run anytime selectedTeam changes.
+
+By setting these values in local storage, the component can access them even after the page is refreshed or the user navigates away and then returns.
+

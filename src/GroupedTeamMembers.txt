@@ -1,0 +1,31 @@
+var teamAMembers = employees.filter((employee) => employee.teamName === 'TeamA');
+        var teamA = {team:'TeamA', members:teamAMembers, collapsed:selectedTeam === 'TeamA'?false:true}
+        teams.push(teamA);
+
+This code is using the filter method on the employees array to create a new array that contains only the elements in employees that have a teamName property equal to 'TeamA'. This new array is then stored in the variable teamAMembers.
+
+Next, the code creates an object with three properties: team, members, and collapsed. The value of the team property is 'TeamA', the value of the members property is the array stored in teamAMembers, and the value of the collapsed property is determined by a ternary operator. If selectedTeam is equal to 'TeamA', the value of collapsed is false. If selectedTeam is not equal to 'TeamA', the value of collapsed is true.
+
+Finally, the object is pushed onto the teams array.
+
+
+
+function handleTeamClick(event)
+    {
+        var newGroup = groupedEmployees.map((groupedData) => groupedData.team === event.currentTarget.id
+                                                             ?{...groupedData,collapsed:!groupedData.collapsed}
+                                                             :groupedData);
+        setGroupedData(transformedGroupeData);
+        setTeam(event.currentTarget.id);                                                     
+    }
+
+This code defines a function called handleTeamClick, which takes an event object as its input.
+
+The function starts by defining a variable called newGroup, which is a mapped version of the groupedEmployees array. Each element of the array is transformed based on the following logic:
+
+If the element's team property is equal to the id property of the event.currentTarget object, the element is spread into a new object using the spread operator ({...groupedData}) and a new property called collapsed is added with a value that is the opposite of the current value of the collapsed property.
+If the element's team property is not equal to the id property of the event.currentTarget object, the element is returned as is.
+After the newGroup variable is defined, the function uses the setGroupedData function to update the groupedData state with the new group of data, and then it uses the setTeam function to update the team state with the id property of the event.currentTarget object.
+
+
+
